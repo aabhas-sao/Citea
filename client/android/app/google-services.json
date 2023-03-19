@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "454357974811",
+    "project_id": "byob-4fceb",
+    "storage_bucket": "byob-4fceb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454357974811:android:5d3a51d323ff9a6d975dbe",
+        "android_client_info": {
+          "package_name": "com.aabhas.byob"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "454357974811-o81v98urh9844mutaqgfu86ong4rd31d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMO9gshFQ8pE1_u0NKCJMt7cbiVYzfS60"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "454357974811-o81v98urh9844mutaqgfu86ong4rd31d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
