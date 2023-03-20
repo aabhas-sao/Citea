@@ -10,4 +10,10 @@ export default StyleSheet.create({
   p: {
     padding: 8,
   },
+  pl: {
+    padding: 8,
+  },
+  backdrop: {
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+  },
 });
