@@ -1,23 +1,32 @@
 import React, {useState} from 'react';
 import {Layout, Text, Input, Button} from '@ui-kitten/components';
+import styles from '../../styles/index';
+import Spacer from 'react-styled-spacer';
 
 const Signin = ({setIsSignin, isSignin}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
-    <Layout>
-      <Text>Sign in</Text>
+    <Layout style={{...styles.p}}>
+      <Spacer h={18} />
+
+      <Text style={{...styles.heading, ...styles.textCenter}}>Signin</Text>
+      <Spacer h={36} />
       <Input
         placeholder="Enter email"
         value={email}
         onChangeText={nextValue => setEmail(nextValue)}
       />
+      <Spacer h={18} />
+
       <Input
         placeholder="Enter password"
         value={password}
         onChangeText={nextValue => setPassword(nextValue)}
       />
+
+      <Spacer h={36} />
 
       <Button
         onPress={() => {
@@ -28,7 +37,7 @@ const Signin = ({setIsSignin, isSignin}) => {
       <Button
         appearance="ghost"
         onPress={() => {
-          console.log('click');
+          setIsSignin(!isSignin);
         }}>
         Don't have a BYOB account
       </Button>
