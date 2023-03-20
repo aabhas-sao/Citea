@@ -1,7 +1,8 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native';
-import {Button} from '@ui-kitten/components';
+import {Button, Text} from '@ui-kitten/components';
 import {signOut} from '../../firebase/auth';
+import styles from '../../styles';
 
 const ProfileScreen = () => {
   return (
@@ -9,6 +10,7 @@ const ProfileScreen = () => {
       <Button
         appearance="ghost"
         onPress={() => {
+          <Text style={{...styles.heading, ...styles.textCenter}}>Hello </Text>;
           signOut();
         }}>
         sign out
