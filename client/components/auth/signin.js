@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Layout, Text, Input, Button} from '@ui-kitten/components';
 import styles from '../../styles/index';
 import Spacer from 'react-styled-spacer';
+import {signinWithEmail} from '../../firebase/auth';
 
 const Signin = ({setIsSignin, isSignin}) => {
   const [email, setEmail] = useState('');
@@ -30,6 +31,7 @@ const Signin = ({setIsSignin, isSignin}) => {
 
       <Button
         onPress={() => {
+          signinWithEmail(email, password);
           console.log('click');
         }}>
         Sign in

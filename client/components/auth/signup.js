@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styles from '../../styles/index';
 import Spacer from 'react-styled-spacer';
 import {Layout, Text, Input, Button} from '@ui-kitten/components';
+import {createAccountWithEmail} from '../../firebase/auth';
 
 const Signup = ({isSignin, setIsSignin}) => {
   const [email, setEmail] = useState('');
@@ -13,21 +14,18 @@ const Signup = ({isSignin, setIsSignin}) => {
       <Spacer h={18} />
       <Text style={{...styles.heading, ...styles.textCenter}}>Signup</Text>
       <Spacer h={36} />
-
       <Input
         placeholder="Enter email"
         value={email}
         onChangeText={nextValue => setEmail(nextValue)}
       />
       <Spacer h={18} />
-
       <Input
         placeholder="Enter password"
         value={password}
         onChangeText={nextValue => setPassword(nextValue)}
       />
       <Spacer h={18} />
-
       <Input
         placeholder="Confirm password"
         value={cPassword}
@@ -35,8 +33,15 @@ const Signup = ({isSignin, setIsSignin}) => {
       />
       <Spacer h={36} />
 
-      <Button>Signup</Button>
-
+      <Button
+        onPress={() => {
+          if (password != cPassword) {
+            console.log('Passwords donot match');
+          }
+          createAccountWithEmail(email, password);
+        }}>
+        Signup
+      </Button>
       <Button
         appearance="ghost"
         onPress={() => {

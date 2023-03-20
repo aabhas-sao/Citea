@@ -1,10 +1,18 @@
 import React from 'react';
-import {Text, SafeAreaView} from 'react-native';
+import {SafeAreaView} from 'react-native';
+import {Button} from '@ui-kitten/components';
+import {signOut} from '../../firebase/auth';
 
 const ProfileScreen = () => {
   return (
     <SafeAreaView>
-      <Text>Profile Screen</Text>
+      <Button
+        appearance="ghost"
+        onPress={() => {
+          signOut();
+        }}>
+        sign out
+      </Button>
     </SafeAreaView>
   );
 };
