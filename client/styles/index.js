@@ -16,4 +16,10 @@ export default StyleSheet.create({
   backdrop: {
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
   },
+  heroImage: {
+    borderRadius: 12,
+    width: '90%',
+    height: 300,
+    alignSelf: 'center',
+  },
 });
