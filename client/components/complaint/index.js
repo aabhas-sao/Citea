@@ -1,6 +1,7 @@
 import React from 'react';
 import GetLocation from 'react-native-get-location';
 import {PermissionsAndroid} from 'react-native';
+import {createComplaint} from '../../firebase/db';
 
 import {
   Layout,
@@ -33,14 +34,35 @@ const ComplaintScreen = ({navigation}) => {
         },
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        GetLocation.getCurrentPosition({
+          enableHighAccuracy: true,
+          timeout: 60000,
+        })
+          .then(location => {
+            console.log(location);
+            createComplaint(requestTypes[selectedIndex - 1], value, {
+              latitude: location.latitude,
+              longitude: location.longitude,
+            });
+          })
+          .catch(error => {
+            const {code, message} = error;
+            console.warn(code, message);
+          });
         console.log('You can use locations ');
       } else {
+        createComplaint(requestTypes[selectedIndex - 1], value, {
+          latitude: 0,
+          longitude: 0,
+        });
         console.log('Location permission denied');
       }
     } catch (err) {
       console.warn(err);
     }
   };
+
+  const requestTypes = ['Road', 'StreetLight', 'Other'];
 
   return (
     <Layout style={{...styles.p}}>
@@ -49,10 +71,11 @@ const ComplaintScreen = ({navigation}) => {
 
       <Select
         selectedIndex={selectedIndex}
+        value={requestTypes[selectedIndex - 1]}
         onSelect={index => setSelectedIndex(index)}>
-        <SelectItem title="Road" />
-        <SelectItem title="Streetlight" />
-        <SelectItem title="Other" />
+        <SelectItem title={requestTypes[0]} />
+        <SelectItem title={requestTypes[1]} />
+        <SelectItem title={requestTypes[2]} />
       </Select>
 
       <Spacer h={9} />
